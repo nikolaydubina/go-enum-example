@@ -14,12 +14,34 @@ const (
 
 `go vet` analyzer. Checks AST for possible issues.
 
+File that contains directive for enum marking will be skipped.
+```go
+//enum:Color
+type Color uint
+
+const (
+  Undefined Color = iota
+  Red
+  Green
+  Blue
+)
+
 ### Usage Notes
 
 This tool needs to be run over all packages.
 As of 2022-11-12, I did not figure out how to get full AST that will go to your binary.
 Thus, you need to run this tool over all packages you include in your binary.
 If you vendor or have monorepo, this is easier to do.
+
+### TODO!!!!!
+
+what to do when some package uses symbol from other package enum?
+
+what to do with renamed packages?
+
+what to do with collision of package names?
+
+what to do when some package redeclares enum type with new name?
 
 ## Issues
 
