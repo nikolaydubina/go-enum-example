@@ -5,7 +5,7 @@ Basic enum
 type Color uint
 
 const (
-  UndefinedColor Color = iota
+  Undefined Color = iota
   Red
   Green
   Blue
