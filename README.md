@@ -14,6 +14,11 @@ const (
 
 ## Issues
 
+Classes of issues:
+- create new value
+- convert value to enum
+- non-comparison operators
+
 ### Assign variable on init
 
 ```go
@@ -27,7 +32,15 @@ func myfunc() {
 ### New constants
 
 ```go
-const BadColor Color = 1000
+package badpacakge
+
+const BadColor colors.Color = 1000
+```
+
+### Cast number
+
+```go
+var x = Color(1000)
 ```
 
 ### Expressions with operators and untyped constants
