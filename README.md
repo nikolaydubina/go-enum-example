@@ -1,0 +1,1 @@
+# go-enum-untyped-block
