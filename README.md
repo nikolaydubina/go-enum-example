@@ -12,6 +12,8 @@ const (
 )
 ```
 
+`go vet` analyzer. Checks AST for possible issues.
+
 ## Issues
 
 Classes of issues:
