@@ -50,6 +50,7 @@ const x = 5
 
 func main() {
   var e Color = Green + 5
+  var b Color = Green - x
 }
 ```
 
