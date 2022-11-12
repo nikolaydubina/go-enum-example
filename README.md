@@ -64,6 +64,13 @@ func badfunc() Color {
 }
 ```
 
+### Non-comparison operators
+
+```go
+var e Color = Green + Red
+var e Color = Green * Red
+```
+
 ## References
 
 * https://go.dev/ref/spec
