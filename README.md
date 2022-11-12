@@ -14,6 +14,13 @@ const (
 
 `go vet` analyzer. Checks AST for possible issues.
 
+### Nuances
+
+This tool needs to be run over all packages.
+As of 2022-11-12, I did not figure out how to get full AST that will go to your binary.
+Thus, you need to run this tool over all packages you include in your binary.
+If you vendor or have monorepo, this is easier to do.
+
 ## Issues
 
 Classes of issues:
