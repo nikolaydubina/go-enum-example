@@ -1,4 +1,4 @@
-# go-enum-untyped-block
+# go-enum-check
 
 Basic enum
 ```go
