@@ -104,3 +104,10 @@ var e Color = Green * Red
 ## References
 
 * https://go.dev/ref/spec
+
+----
+
+* https://www.w3schools.com/java/java_enums.asp
+* https://en.cppreference.com/w/cpp/language/enum
+* https://en.cppreference.com/w/c/language/enum
+* https://docs.python.org/3/library/enum.html
