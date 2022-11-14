@@ -1,4 +1,4 @@
-# go-enum-check
+# enumcheck
 
 Basic enum
 ```go
