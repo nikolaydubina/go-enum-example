@@ -5,6 +5,7 @@ It analyses AST to detect issues leading to loss of strictness.
 This tool aims to make enums in Go closer to what they are in Java, Rust, Swift and generally match intuition many people have about compiler guarantees about enums.
 
 ```go
+//enumcheck:def Color
 type Color uint
 
 const (
