@@ -1,4 +1,4 @@
-### How to make Enum in Go?
+### How to make strict Enum in Go?
 
 If you want to harden your Enum with
 * compile time block of accidental arithmetics
