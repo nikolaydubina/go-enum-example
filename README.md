@@ -25,22 +25,14 @@ enumcheck ./...
 For a full list refer to `/example`.
 If you found some case not covered, please raise PR or open an Issue.
 
-#### Assign variable on init
+#### Assign constants
 
 ```go
-func myfunc() {
-  ...
-  var b Color = 100
-  ...
-}
-```
-
-#### New constants
-
-```go
-package badpacakge
-
 const BadColor colors.Color = 1000
+
+func myfunc() {
+  var b colors.Color = 100
+}
 ```
 
 #### Cast number
@@ -55,7 +47,7 @@ var x = Color(1000)
 const x = 5
 
 func main() {
-  var e Color = Green + 5
+  var a Color = Green + 5
   var b Color = Green - x
 }
 ```
@@ -71,8 +63,8 @@ func badfunc() Color {
 #### Non-Comparison operators
 
 ```go
-var e Color = Green + Red
-var e Color = Green * Red
+var a Color = Green + Red
+var b Color = Green * Red
 ```
 
 ## Usage Notes
