@@ -1,111 +1,32 @@
-# enumcheck
+> how to make Enum in Go?
 
-This is `go vet` compatible tool to confirm correctness of strict enum type usage.
-It analyses AST to detect issues leading to loss of strictness.
-This tool aims to make enums in Go closer to what they are in Java, Rust, Swift and generally match intuition many people have about compiler guarantees about enums.
+If you want to harden Enum with
+* compile time block of accidental arithmetics
+* compile time block of implicit cast of untyped constants to Enum type
+* compile time block of all operators except `==` and `!=`
+
+Simply
+* wrap into struct
+* do not export field
 
 ```go
-//enumcheck:def Color
-type Color uint
+package color
 
-const (
-  Undefined Color = iota
-  Red
-  Green
-  Blue
+type Color struct{ c uint }
+
+var (
+	Undefined = Color{}
+	Red       = Color{1}
+	Green     = Color{2}
+	Blue      = Color{3}
 )
 ```
 
-```bash
-enumcheck ./...
-```
+There are still uncovered cases
+- inside of package can override values
+- outside of package can swap enum values
 
-## Detected Issues
-
-For a full list refer to `/example`.
-If you found some case not covered, please raise PR or open an Issue.
-
-#### Assign constants
-
-```go
-const BadColor colors.Color = 1000
-
-func myfunc() {
-  var b colors.Color = 100
-}
-```
-
-#### Cast number
-
-```go
-var x = Color(1000)
-```
-
-#### Expressions with operators and untyped constants
-
-```go
-const x = 5
-
-func main() {
-  var a Color = Green + 5
-  var b Color = Green - x
-}
-```
-
-#### Functions returning untyped constants
-
-```go
-func badfunc() Color {
-  return 1000
-}
-```
-
-#### Non-Comparison operators
-
-```go
-var a Color = Green + Red
-var b Color = Green * Red
-```
-
-## Usage Notes
-
-This tool needs to be run over all packages.
-As of 2022-11-12, I did not figure out how to get full AST that will go to your binary.
-Thus, you need to run this tool over all packages you include in your binary.
-If you vendor or have monorepo or do not export your enum type or have `internal`, this is easier to do.
-
-### Specifying Definition
-
-File that contains this directive for enum marking will be skipped and type will be selected for checks.
-
-```go
-//enumcheck:def Color
-type Color uint
-
-const (
-  Undefined Color = iota
-  Red
-  Green
-  Blue
-)
-```
-
-### Skipping Files
-
-File that contains this directive will be skipped.
-
-```go 
-//enumcheck:skip
-```
-
-## Related Work
-
-* https://github.com/nishanths/exhaustive - performs exhaustive checks in switch; does not check for type conversions; widely used
-* https://github.com/loov/enumcheck - focuses on performing exhastive checks; also does constant expressions validations; as of 2022-11-15, work in progress after 3 years
-
-----
-
-## Appendix A: What is Enum?
+### What is Enum?
 
 Enum is a data type consisting of a set of named values.
 They are typically constants.
@@ -122,7 +43,12 @@ Enums are typically prevented from illogical operations such as arithmetic opera
 * `Rust` - not integer; not converted; arithmetics not permitted; can be extended to integer
 * `Swift` - not integer; not converted; arithmetics not permitted; can be extended to interger
 
-## References
+### Related Tools
+
+* https://github.com/nishanths/exhaustive - performs exhaustive checks in switch; does not check for type conversions; widely used
+* https://github.com/loov/enumcheck - focuses on performing exhastive checks; also does constant expressions validations; as of 2022-11-15, work in progress after 3 years
+
+### References
 
 * https://en.wikipedia.org/wiki/Enumerated_type
 * https://go.dev/ref/spec
