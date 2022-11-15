@@ -1,6 +1,9 @@
 # enumcheck
 
-Basic enum
+This is `go vet` compatible tool to confirm correctness of strict enum type usage.
+It analyses AST to detect issues leading to loss of strictness.
+This tool aims to make enums in Go closer to what they are in Java, Rust, Swift and generally match intuition many people have about compiler guarantees about enums.
+
 ```go
 type Color uint
 
@@ -12,44 +15,14 @@ const (
 )
 ```
 
-`go vet` analyzer. Checks AST for possible issues.
-
-File that contains directive for enum marking will be skipped.
-```go
-//enum:Color
-type Color uint
-
-const (
-  Undefined Color = iota
-  Red
-  Green
-  Blue
-)
+```bash
+enumcheck ./...
 ```
 
-### Usage Notes
+## Detected Issues
 
-This tool needs to be run over all packages.
-As of 2022-11-12, I did not figure out how to get full AST that will go to your binary.
-Thus, you need to run this tool over all packages you include in your binary.
-If you vendor or have monorepo, this is easier to do.
-
-### TODO!!!!!
-
-what to do when some package uses symbol from other package enum?
-
-what to do with renamed packages?
-
-what to do with collision of package names?
-
-what to do when some package redeclares enum type with new name?
-
-## Issues
-
-Classes of issues:
-- create new value
-- convert value to enum
-- non-comparison operators
+For a full list refer to `/example`.
+If you found some case not covered, please raise PR or open an Issue.
 
 ### Assign variable on init
 
@@ -94,19 +67,65 @@ func badfunc() Color {
 }
 ```
 
-### Non-comparison operators
+### Non-Comparison operators
 
 ```go
 var e Color = Green + Red
 var e Color = Green * Red
 ```
 
-## References
+## Usage Notes
 
-* https://go.dev/ref/spec
+This tool needs to be run over all packages.
+As of 2022-11-12, I did not figure out how to get full AST that will go to your binary.
+Thus, you need to run this tool over all packages you include in your binary.
+If you vendor or have monorepo or do not export your enum type or have `internal`, this is easier to do.
+
+### Specifying Definition
+
+File that contains this directive for enum marking will be skipped and type will be selected for checks.
+
+```go
+//enumcheck:def Color
+type Color uint
+
+const (
+  Undefined Color = iota
+  Red
+  Green
+  Blue
+)
+```
+
+### Skipping Files
+
+File that contains this directive will be skipped.
+
+```go 
+//enumcheck:skip
+```
 
 ----
 
+## Appendix A: What is Enum?
+
+Enum is a data type consisting of a set of named values.
+They are typically constants.
+They have comaprison and assignemnt operators.
+Underlying represtentation is free up to compiler, but typically is an integer.
+Enums are typically prevented from illogical operations such as arithmetic operations.
+
+* `C` - interger; exposed; arithmetics permitted;
+* `C#` - integer; not exposed; some arithmetics permitted;
+* `C++` - integer; not exposed; not converted; some arithmetics not permitted;
+* `Go` - integer; exposed; arithmetics permitted;
+* `Python` - integer; arithmetics permitted;
+* `Java` - not integer; not converted; arithmetics not permitted; internally integer;
+* `Rust` - not integer; not converted; arithmetics not permitted; can be extended to integer
+* `Swift` - not integer; not converted; arithmetics not permitted; can be extended to interger
+
+* https://en.wikipedia.org/wiki/Enumerated_type
+* https://go.dev/ref/spec
 * https://www.w3schools.com/java/java_enums.asp
 * https://en.cppreference.com/w/cpp/language/enum
 * https://en.cppreference.com/w/c/language/enum
