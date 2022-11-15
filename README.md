@@ -23,7 +23,7 @@ var (
 )
 ```
 
-There are still uncovered cases
+There are still uncovered cases, albeit they are very unlikely and easy to spot
 - inside of package can override values
 - outside of package can swap enum values
 
