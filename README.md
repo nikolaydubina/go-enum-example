@@ -24,7 +24,7 @@ enumcheck ./...
 For a full list refer to `/example`.
 If you found some case not covered, please raise PR or open an Issue.
 
-### Assign variable on init
+#### Assign variable on init
 
 ```go
 func myfunc() {
@@ -34,7 +34,7 @@ func myfunc() {
 }
 ```
 
-### New constants
+#### New constants
 
 ```go
 package badpacakge
@@ -42,13 +42,13 @@ package badpacakge
 const BadColor colors.Color = 1000
 ```
 
-### Cast number
+#### Cast number
 
 ```go
 var x = Color(1000)
 ```
 
-### Expressions with operators and untyped constants
+#### Expressions with operators and untyped constants
 
 ```go
 const x = 5
@@ -59,7 +59,7 @@ func main() {
 }
 ```
 
-### Functions returning untyped constants
+#### Functions returning untyped constants
 
 ```go
 func badfunc() Color {
@@ -67,7 +67,7 @@ func badfunc() Color {
 }
 ```
 
-### Non-Comparison operators
+#### Non-Comparison operators
 
 ```go
 var e Color = Green + Red
@@ -105,6 +105,11 @@ File that contains this directive will be skipped.
 //enumcheck:skip
 ```
 
+## Related Work
+
+* https://github.com/nishanths/exhaustive - performs exhaustive checks in switch; does not check for type conversions; widely used
+* https://github.com/loov/enumcheck - focuses on performing exhastive checks; also does constant expressions validations; as of 2022-11-15, work in progress after 3 years
+
 ----
 
 ## Appendix A: What is Enum?
@@ -123,6 +128,8 @@ Enums are typically prevented from illogical operations such as arithmetic opera
 * `Java` - not integer; not converted; arithmetics not permitted; internally integer;
 * `Rust` - not integer; not converted; arithmetics not permitted; can be extended to integer
 * `Swift` - not integer; not converted; arithmetics not permitted; can be extended to interger
+
+## References
 
 * https://en.wikipedia.org/wiki/Enumerated_type
 * https://go.dev/ref/spec
