@@ -1,8 +1,8 @@
-> how to make Enum in Go?
+### How to make Enum in Go?
 
-If you want to harden Enum with
+If you want to harden your Enum with
 * compile time block of accidental arithmetics
-* compile time block of implicit cast of untyped constants to Enum type
+* compile time block of implicit cast of untyped constants
 * compile time block of all operators except `==` and `!=`
 
 Simply
