@@ -46,7 +46,7 @@ Enums are typically prevented from illogical operations such as arithmetic opera
 
 ### Related Tools
 
-* https://github.com/nishanths/exhaustive - performs exhaustive checks in switch; does not check for type conversions; widely used
+* https://github.com/nishanths/exhaustive - performs exhaustive checks in switch; does not check for type conversions; widely used; however does not support struct enums
 * https://github.com/loov/enumcheck - focuses on performing exhastive checks; also does constant expressions validations; as of 2022-11-15, work in progress after 3 years
 
 ### References
