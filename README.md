@@ -8,6 +8,7 @@ If you want to harden your Enum with
 Simply
 * wrap into struct
 * do not export field
+* make separate package
 
 ```go
 package color
