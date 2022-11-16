@@ -74,10 +74,10 @@ Problems,
 All versions have zero mallocs and memory transfer.
 
 ```bash
-go test -bench=. -count=3 ./color > struct                
-go test -bench=. -count=3 ./color-int > int   
-go test -bench=. -count=3 ./color-string > string
-benchstat -split="XYZ" struct int string 
+go test -bench=. -count=3 ./color > doc/struct
+go test -bench=. -count=3 ./color-int > doc/int
+go test -bench=. -count=3 ./color-string > doc/string
+benchstat -split="XYZ" doc/struct doc/int doc/string
 ```
 
 ```
