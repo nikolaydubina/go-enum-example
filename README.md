@@ -47,7 +47,7 @@ Problems
  * string comparison can take up to `O(N)`, which is very common operation on Enums
  * strings in struct fields result to more indirection as compared to `int` or `struct`
  * if it is not wrapped into struct, it will also leak comparison and concatenation operators and casts
- * practically, it is `4x` ~ `5x` slower
+ * can be up to `4x` ~ `5x` slower
 
 
 ### Why not `uint` and `iota`?
