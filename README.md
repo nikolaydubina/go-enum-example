@@ -29,7 +29,7 @@ There are still uncovered cases, albeit they are very unlikely and easy to spot,
 - outside of package can swap enum values
 - (if not separate pacakge) inside of package can override values
 
-### Why not use `string`?
+### Why not `string`?
 
 ```go
 type Color string
