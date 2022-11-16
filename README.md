@@ -5,8 +5,7 @@ To harden Enum with,
 * compile time block of implicit cast of untyped constants
 * compile time block of all operators except `==` and `!=`
 * compile time block of creaing new values
-
-With zero overhead.
+* **zero overhead**
 
 Simply,
 * wrap into struct
@@ -26,7 +25,7 @@ var (
 )
 ```
 
-There are still uncovered cases, albeit they are very unlikely and easy to spot
+There are still uncovered cases, albeit they are very unlikely and easy to spot,
 - outside of package can swap enum values
 - (if not separate pacakge) inside of package can override values
 
@@ -52,8 +51,6 @@ Problems
 
 
 ### Why not `uint` and `iota`?
-
-Following two alternatives
 
 ```go
 type Color uint
