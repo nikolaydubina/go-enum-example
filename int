@@ -1,0 +1,17 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/nikolaydubina/go-enum-example/color-int
+BenchmarkEnumPassFunction_Big/call_one-10         	514857664	         2.133 ns/op
+BenchmarkEnumPassFunction_Big/call_one-10         	560561899	         2.138 ns/op
+BenchmarkEnumPassFunction_Big/call_one-10         	558085563	         2.146 ns/op
+BenchmarkEnumPassFunction_Big/call_one_apple-10   	506391520	         2.379 ns/op
+BenchmarkEnumPassFunction_Big/call_one_apple-10   	504391446	         2.380 ns/op
+BenchmarkEnumPassFunction_Big/call_one_apple-10   	504120130	         2.379 ns/op
+BenchmarkEnumPassFunction/call_one-10             	564201639	         2.142 ns/op
+BenchmarkEnumPassFunction/call_one-10             	554502064	         2.145 ns/op
+BenchmarkEnumPassFunction/call_one-10             	557825919	         2.142 ns/op
+BenchmarkEnumPassFunction/call_one_apple-10       	492266376	         2.439 ns/op
+BenchmarkEnumPassFunction/call_one_apple-10       	491906680	         2.438 ns/op
+BenchmarkEnumPassFunction/call_one_apple-10       	492531898	         2.453 ns/op
+PASS
+ok  	github.com/nikolaydubina/go-enum-example/color-int	17.482s
