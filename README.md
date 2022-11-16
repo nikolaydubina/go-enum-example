@@ -54,6 +54,10 @@ String content is not copied in function calls or assignments.
 However, string comparison takes `O(N)`, which is very common operation on Enums.
 And if it is not wrapped into struct, it will leak comparison and concatenation operators.
 
+### Benchmarks
+
+TODO
+
 ### What is Enum?
 
 Enum is a data type consisting of a set of named values.
