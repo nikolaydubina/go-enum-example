@@ -27,6 +27,33 @@ There are still uncovered cases, albeit they are very unlikely and easy to spot
 - inside of package can override values
 - outside of package can swap enum values
 
+### Why not use `string`?
+
+Following two alternatives
+
+```go
+type Color string
+
+const(
+	Red Color = "red"
+	Blue Color = "blue"
+)
+```
+
+```go
+type Color struct { v string }
+
+var (
+	Red = Color{"red"}
+	Blue = Color{"blue"}
+)
+```
+
+Passing strings in Go is done by referneces.
+String content is not copied in function calls or assignments.
+However, string comparison takes `O(N)`, which is very common operation on Enums.
+And if it is not wrapped into struct, it will leak comparison and concatenation operators.
+
 ### What is Enum?
 
 Enum is a data type consisting of a set of named values.
