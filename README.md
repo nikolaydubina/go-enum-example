@@ -4,7 +4,7 @@ To harden Enum with,
 * compile time block of accidental arithmetics
 * compile time block of implicit cast of untyped constants
 * compile time block of all operators except `==` and `!=`
-* compile time block of creaing new values
+* compile time block of creating new values
 * **zero overhead**
 
 Simply,
